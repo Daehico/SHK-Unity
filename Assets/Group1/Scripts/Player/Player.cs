@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject _gameOver;
     private float _boostSpeedDuration;
     private PlayerMove _playerMove;
+    private bool _timer;
 
     private void OnEnable()
     {
@@ -18,21 +19,25 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        _timer = false;
+        _playerMove = GetComponent<PlayerMove>();
+    }
+
     private void Update()
     {
         if (_enemies.Count == 0)
             GameOver();
-    }
-
-    private void Start()
-    {
-        _playerMove = GetComponent<PlayerMove>();
+        if (_timer == true)
+            StartCoroutine(StartTimer());
     }
 
     public void BoostSpeed(float duration)
     {
         _boostSpeedDuration += duration;
         _playerMove.UpSpeed();
+        _timer = true;
     }
 
     private IEnumerator StartTimer()
@@ -40,7 +45,9 @@ public class Player : MonoBehaviour
         _boostSpeedDuration -= Time.deltaTime;
         if(_boostSpeedDuration <= 0)
         {
-            StopCoroutine(StartTimer());
+            _playerMove.DownSpeed();
+            _timer = false;
+            StopCoroutine(StartTimer());     
         }
         yield return null;
     }

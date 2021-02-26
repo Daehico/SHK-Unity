@@ -5,8 +5,6 @@ using UnityEngine.Events;
 
 public abstract class CollectableItems : MonoBehaviour
 {
-    public readonly Player player;
-
     public event UnityAction<CollectableItems> EnemyKilled;
 
     private void OnTriggerEnter(Collider other)

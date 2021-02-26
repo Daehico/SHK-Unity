@@ -133,8 +133,8 @@ GameObject:
   m_Component:
   - component: {fileID: 141422279}
   - component: {fileID: 141422278}
-  - component: {fileID: 141422277}
   - component: {fileID: 141422280}
+  - component: {fileID: 141422277}
   - component: {fileID: 141422276}
   m_Layer: 0
   m_Name: enemy
@@ -243,9 +243,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 141422275}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 377792ae3c2141f41aa9f57ad3495729, type: 3}
+  m_Script: {fileID: 11500000, guid: ccf823ef79a33474cbf00fd6b7b1e1f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _player: {fileID: 1761935013}
+  _duration: 1
 --- !u!1 &170076733
 GameObject:
   m_ObjectHideFlags: 0
@@ -574,7 +576,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1578050040}
   - component: {fileID: 1578050039}
-  - component: {fileID: 1578050041}
+  - component: {fileID: 1578050042}
   - component: {fileID: 1578050038}
   - component: {fileID: 1578050037}
   m_Layer: 0
@@ -675,7 +677,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1578050041
+--- !u!114 &1578050042
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -684,9 +686,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1578050036}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 377792ae3c2141f41aa9f57ad3495729, type: 3}
+  m_Script: {fileID: 11500000, guid: ccf823ef79a33474cbf00fd6b7b1e1f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _player: {fileID: 1761935013}
+  _duration: 1
 --- !u!1 &1754708960
 GameObject:
   m_ObjectHideFlags: 0
@@ -925,7 +929,7 @@ MonoBehaviour:
   - {fileID: 2083640149}
   - {fileID: 1754708965}
   - {fileID: 141422280}
-  - {fileID: 1578050041}
+  - {fileID: 1578050042}
   _gameOver: {fileID: 1054253062}
 --- !u!65 &1761935014
 BoxCollider:
