@@ -169,6 +169,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 2
+  _radius: 4
 --- !u!212 &141422278
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -246,8 +247,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccf823ef79a33474cbf00fd6b7b1e1f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 1761935013}
-  _duration: 1
+  _duration: 3
 --- !u!1 &170076733
 GameObject:
   m_ObjectHideFlags: 0
@@ -612,6 +612,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 2
+  _radius: 4
 --- !u!212 &1578050039
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -689,8 +690,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccf823ef79a33474cbf00fd6b7b1e1f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 1761935013}
-  _duration: 1
+  _duration: 3
 --- !u!1 &1754708960
 GameObject:
   m_ObjectHideFlags: 0
@@ -737,6 +737,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 2
+  _radius: 4
 --- !u!212 &1754708963
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -971,8 +972,8 @@ GameObject:
   - component: {fileID: 2083640148}
   - component: {fileID: 2083640147}
   - component: {fileID: 2083640150}
-  - component: {fileID: 2083640151}
   - component: {fileID: 2083640149}
+  - component: {fileID: 2083640151}
   m_Layer: 0
   m_Name: enemy
   m_TagString: Enemy
@@ -1070,6 +1071,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 2
+  _radius: 4
 --- !u!65 &2083640151
 BoxCollider:
   m_ObjectHideFlags: 0

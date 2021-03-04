@@ -9,47 +9,43 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject _gameOver;
     private float _boostSpeedDuration;
     private PlayerMove _playerMove;
-    private bool _timer;
+    private int _countOfBosters;
 
     private void OnEnable()
     {
-        foreach(var _enemy in _enemies)
+        foreach (var _enemy in _enemies)
         {
-            _enemy.EnemyKilled += RemoveEnemy;
+            _enemy.ItemCollected += RemoveEnemy;
         }
     }
 
     private void Start()
     {
-        _timer = false;
+        _countOfBosters = 0;
         _playerMove = GetComponent<PlayerMove>();
-    }
-
-    private void Update()
-    {
-        if (_enemies.Count == 0)
-            GameOver();
-        if (_timer == true)
-            StartCoroutine(StartTimer());
     }
 
     public void BoostSpeed(float duration)
     {
-        _boostSpeedDuration += duration;
-        _playerMove.UpSpeed();
-        _timer = true;
+        _boostSpeedDuration = duration;   
+        _countOfBosters++;
+        StartCoroutine(StartTimer());
+        _playerMove.UpSpeed(_countOfBosters);
     }
 
     private IEnumerator StartTimer()
     {
-        _boostSpeedDuration -= Time.deltaTime;
-        if(_boostSpeedDuration <= 0)
+        while(_countOfBosters != 0)
         {
-            _playerMove.DownSpeed();
-            _timer = false;
-            StopCoroutine(StartTimer());     
+            _boostSpeedDuration -= Time.deltaTime;
+            if (_boostSpeedDuration <= 0)
+            {
+                _countOfBosters--;
+                _playerMove.UpSpeed(_countOfBosters);
+            }
+            yield return new WaitForEndOfFrame();
         }
-        yield return null;
+        StopCoroutine(StartTimer());
     }
 
     private void GameOver()
@@ -59,7 +55,9 @@ public class Player : MonoBehaviour
 
     private void RemoveEnemy(CollectableItems enemy)
     {
-        enemy.EnemyKilled -= RemoveEnemy;
+        enemy.ItemCollected -= RemoveEnemy;
         _enemies.Remove(enemy);
+        if (_enemies.Count == 0)
+            GameOver();
     }
 }

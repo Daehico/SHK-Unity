@@ -5,20 +5,20 @@ using UnityEngine.Events;
 
 public abstract class CollectableItems : MonoBehaviour
 {
-    public event UnityAction<CollectableItems> EnemyKilled;
+    private Player _player;
+
+    public Player Player => _player;
+
+    public event UnityAction<CollectableItems> ItemCollected;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<Player>())
         {
-            InvokeEvent();
+            _player = other.GetComponent<Player>();
+            ItemCollected?.Invoke(this);
             Collect();
         }
-    }
-
-    private void InvokeEvent()
-    {
-        EnemyKilled?.Invoke(this);
     }
 
     public abstract void Collect();
