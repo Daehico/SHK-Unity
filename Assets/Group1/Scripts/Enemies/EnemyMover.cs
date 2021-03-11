@@ -11,17 +11,17 @@ public class EnemyMover : MonoBehaviour
 
     private void Start()
     {
-        SetTarget();
+        ChangeTarget();
     }
 
     private void Update()
     {
         transform.position = Vector3.MoveTowards(transform.position, _target, _speed * Time.deltaTime);
         if (transform.position == _target)
-            SetTarget();
+            ChangeTarget();
     }
 
-    private void SetTarget()
+    private void ChangeTarget()
     {
         _target = Random.insideUnitCircle * _radius;
     }

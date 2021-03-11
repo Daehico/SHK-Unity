@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 public class Enemy : CollectableItems
 {
-    public override void Collect()
+    public override void Collect(Player player)
     {
         Destroy(gameObject);
     }

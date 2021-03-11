@@ -926,7 +926,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80014948c9605e04585efd8653b660bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemies:
+  _collectableItems:
   - {fileID: 2083640149}
   - {fileID: 1754708965}
   - {fileID: 141422280}

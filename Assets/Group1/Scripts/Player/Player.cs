@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerMove))]
 public class Player : MonoBehaviour
 {
-    [SerializeField] private List<CollectableItems> _enemies = new List<CollectableItems>();
+    [SerializeField] private List<CollectableItems> _collectableItems = new List<CollectableItems>();
     [SerializeField] private GameObject _gameOver;
     private float _boostSpeedDuration;
     private PlayerMove _playerMove;
@@ -13,9 +13,9 @@ public class Player : MonoBehaviour
 
     private void OnEnable()
     {
-        foreach (var _enemy in _enemies)
+        foreach (var _item in _collectableItems)
         {
-            _enemy.ItemCollected += RemoveEnemy;
+            _item.ItemCollected += RemoveEnemy;
         }
     }
 
@@ -53,11 +53,11 @@ public class Player : MonoBehaviour
         _gameOver.SetActive(true);
     }
 
-    private void RemoveEnemy(CollectableItems enemy)
+    private void RemoveEnemy(CollectableItems item)
     {
-        enemy.ItemCollected -= RemoveEnemy;
-        _enemies.Remove(enemy);
-        if (_enemies.Count == 0)
+        item.ItemCollected -= RemoveEnemy;
+        _collectableItems.Remove(item);
+        if (_collectableItems.Count == 0)
             GameOver();
     }
 }

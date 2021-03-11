@@ -6,9 +6,9 @@ public class Speed : CollectableItems
 {
     [SerializeField] private float _duration;
 
-    public override void Collect()
+    public override void Collect(Player player)
     {
-        Player.BoostSpeed(_duration);
+        player.BoostSpeed(_duration);
         Destroy(gameObject);
     }
 }

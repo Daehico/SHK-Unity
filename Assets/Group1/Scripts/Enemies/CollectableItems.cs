@@ -5,22 +5,17 @@ using UnityEngine.Events;
 
 public abstract class CollectableItems : MonoBehaviour
 {
-    private Player _player;
-
-    public Player Player => _player;
-
     public event UnityAction<CollectableItems> ItemCollected;
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<Player>())
+        if (other.TryGetComponent(out Player player))
         {
-            _player = other.GetComponent<Player>();
             ItemCollected?.Invoke(this);
-            Collect();
+            Collect(player);
         }
     }
 
-    public abstract void Collect();
+    public abstract void Collect(Player player);
 
 }
