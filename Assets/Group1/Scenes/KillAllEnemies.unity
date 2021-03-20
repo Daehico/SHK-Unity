@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 141422277}
   - component: {fileID: 141422276}
   m_Layer: 0
-  m_Name: enemy
+  m_Name: enemySpeed
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -247,7 +247,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccf823ef79a33474cbf00fd6b7b1e1f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _duration: 3
+  _duration: 5
 --- !u!1 &170076733
 GameObject:
   m_ObjectHideFlags: 0
@@ -580,7 +580,7 @@ GameObject:
   - component: {fileID: 1578050038}
   - component: {fileID: 1578050037}
   m_Layer: 0
-  m_Name: enemy
+  m_Name: enemySpeed
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -690,7 +690,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccf823ef79a33474cbf00fd6b7b1e1f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _duration: 3
+  _duration: 5
 --- !u!1 &1754708960
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,14 +10,7 @@ public class Player : MonoBehaviour
     private float _boostSpeedDuration;
     private PlayerMove _playerMove;
     private int _countOfBosters;
-
-    private void OnEnable()
-    {
-        foreach (var _item in _collectableItems)
-        {
-            _item.ItemCollected += RemoveEnemy;
-        }
-    }
+    private float _curentTime;
 
     private void Start()
     {
@@ -27,25 +20,17 @@ public class Player : MonoBehaviour
 
     public void BoostSpeed(float duration)
     {
-        _boostSpeedDuration = duration;   
         _countOfBosters++;
-        StartCoroutine(StartTimer());
         _playerMove.UpSpeed(_countOfBosters);
     }
 
-    private IEnumerator StartTimer()
+    public void UnBoostSpeed()
     {
-        while(_countOfBosters != 0)
-        {
-            _boostSpeedDuration -= Time.deltaTime;
-            if (_boostSpeedDuration <= 0)
-            {
-                _countOfBosters--;
-                _playerMove.UpSpeed(_countOfBosters);
-            }
-            yield return new WaitForEndOfFrame();
-        }
-        StopCoroutine(StartTimer());
+        _countOfBosters--;
+        if (_countOfBosters != 0)
+            _playerMove.UpSpeed(_countOfBosters);
+        else
+            _playerMove.DownSpeed();
     }
 
     private void GameOver()
@@ -53,9 +38,8 @@ public class Player : MonoBehaviour
         _gameOver.SetActive(true);
     }
 
-    private void RemoveEnemy(CollectableItems item)
+    public void RemoveEnemy(CollectableItems item)
     {
-        item.ItemCollected -= RemoveEnemy;
         _collectableItems.Remove(item);
         if (_collectableItems.Count == 0)
             GameOver();
