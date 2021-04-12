@@ -27,10 +27,7 @@ public class Player : MonoBehaviour
     public void UnBoostSpeed()
     {
         _countOfBosters--;
-        if (_countOfBosters != 0)
-            _playerMove.UpSpeed(_countOfBosters);
-        else
-            _playerMove.DownSpeed();
+        _playerMove.DownSpeed();
     }
 
     private void GameOver()
@@ -38,7 +35,7 @@ public class Player : MonoBehaviour
         _gameOver.SetActive(true);
     }
 
-    public void RemoveEnemy(CollectableItems item)
+    public void RemoveEnemyFromList(CollectableItems item)
     {
         _collectableItems.Remove(item);
         if (_collectableItems.Count == 0)

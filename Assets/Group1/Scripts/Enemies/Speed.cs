@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(BoxCollider),typeof(SpriteRenderer))]
 public class Speed : CollectableItems
 {
     [SerializeField] private float _duration;
@@ -18,14 +19,8 @@ public class Speed : CollectableItems
 
     private IEnumerator StartTimer(Player player)
     {
-        while (_curentTime < _duration)
-        {
-            _curentTime += Time.deltaTime;
-            yield return new WaitForEndOfFrame();
-        }
+        yield return new WaitForSeconds(_duration);
         player.UnBoostSpeed();
-        Destroy(gameObject);
-        StopCoroutine(StartTimer(player));
+        Destroy(gameObject);      
     }
-
 }
