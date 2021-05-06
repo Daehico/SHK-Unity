@@ -11,7 +11,7 @@ public class Speed : CollectableItems
 
     public override void Collect(Player player)
     {
-        player.BoostSpeed(_duration);
+        player.GetComponent<PlayerMove>().UpSpeed();
         StartCoroutine(StartTimer(player));
         GetComponent<BoxCollider>().enabled = false;
         GetComponent<SpriteRenderer>().enabled = false;
@@ -20,7 +20,7 @@ public class Speed : CollectableItems
     private IEnumerator StartTimer(Player player)
     {
         yield return new WaitForSeconds(_duration);
-        player.UnBoostSpeed();
+        player.GetComponent<PlayerMove>().DownSpeed();
         Destroy(gameObject);      
     }
 }

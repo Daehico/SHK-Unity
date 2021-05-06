@@ -8,13 +8,12 @@ public class PlayerMove : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
-            transform.Translate(Input.GetAxis("Horizontal") * _speed * Time.deltaTime, Input.GetAxis("Vertical") * _speed * Time.deltaTime, 0);
+        transform.Translate(Input.GetAxis("Horizontal") * _speed * Time.deltaTime, Input.GetAxis("Vertical") * _speed * Time.deltaTime, 0);
     }
 
-    public void UpSpeed(int countOfBoosters)
+    public void UpSpeed()
     {
-        _speed *= (2 + countOfBoosters);
+        _speed *= 2;
     }
 
     public void DownSpeed()
