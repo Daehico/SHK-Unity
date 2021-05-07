@@ -7,20 +7,30 @@ public class Speed : CollectableItems
 {
     [SerializeField] private float _duration;
 
-    private float _curentTime;
+    private BoxCollider _boxColider;
+    private SpriteRenderer _spriteRenderer;
+
+    private void Start()
+    {
+        _boxColider = GetComponent<BoxCollider>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+    }
 
     public override void Collect(Player player)
     {
-        player.GetComponent<PlayerMove>().UpSpeed();
-        StartCoroutine(StartTimer(player));
-        GetComponent<BoxCollider>().enabled = false;
-        GetComponent<SpriteRenderer>().enabled = false;
+        StartCoroutine(Boost(player));
+        _boxColider.enabled = false;
+        _spriteRenderer.enabled = false;
     }
 
-    private IEnumerator StartTimer(Player player)
+    private IEnumerator Boost(Player player)
     {
-        yield return new WaitForSeconds(_duration);
-        player.GetComponent<PlayerMove>().DownSpeed();
-        Destroy(gameObject);      
+        if (player.TryGetComponent(out PlayerMove _playerMove))
+        {
+            _playerMove.UpSpeed();
+            yield return new WaitForSeconds(_duration);
+           _playerMove.DownSpeed();
+            Destroy(gameObject);
+        }   
     }
 }

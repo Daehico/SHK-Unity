@@ -9,11 +9,15 @@ public abstract class CollectableItems : MonoBehaviour
     {
         if (other.TryGetComponent(out Player player))
         {
-            player.RemoveEnemyFromList(this);
+            RemoveEnemyFromList(player);
             Collect(player);
         }
     }
 
-    public abstract void Collect(Player player);
+    private void RemoveEnemyFromList(Player player)
+    {
+        player.RemoveEnemyFromList(this);
+    }
 
+    public abstract void Collect(Player player);
 }
